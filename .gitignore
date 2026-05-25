@@ -1,0 +1,7 @@
+# nix build output symlinks
+result
+result-*
+
+# editor / OS noise
+.DS_Store
+.direnv/
