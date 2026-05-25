@@ -17,7 +17,6 @@
         "firefox"
         "rstudio"
         "antigravity"
-        "aerospace"
         "alt-tab"
         "android-platform-tools"
         "android-studio"
@@ -42,7 +41,6 @@
       ];
 
       taps = [
-        "nikitabobko/tap"      # for aerospace
         "cristianoliveira/tap"
         "felixkratz/formulae"  # for sketchybar
         "grishka/grishka"      # for neardrop

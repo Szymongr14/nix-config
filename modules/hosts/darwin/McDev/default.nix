@@ -32,5 +32,17 @@ in
 
     # Set Git commit hash for darwin-version.
     system.configurationRevision = self.rev or self.dirtyRev or null;
+
+    # Pick which home-manager modules this host's user gets.
+    home-manager.users.${host.user.name} = {
+      imports = with config.flake.modules.homeManager; [
+        base
+        git
+        aerospace
+        zsh
+        claudeConfig
+        codexConfig
+      ];
+    };
   };
 }

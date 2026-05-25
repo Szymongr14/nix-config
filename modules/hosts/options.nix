@@ -44,4 +44,8 @@ in
     options.host = hostOptions;
     config.host.isDarwin = lib.mkDefault true;
   };
+
+  flake.modules.homeManager.base = {
+    options.host = hostOptions;
+  };
 }
