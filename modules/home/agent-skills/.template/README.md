@@ -1,15 +1,15 @@
 # Skill template
 
 Skills defined here are automatically linked into BOTH `~/.claude/skills/`
-AND `~/.codex/skills/` by `claude-config/skills.nix`. One source, two agents.
+AND `~/.codex/skills/` by `agent-skills.nix`. One source, two agents.
 
 How to add a new skill:
 
 1. Copy this directory to a sibling with the real skill name (kebab-case):
 
    ```sh
-   cp -r modules/home/claude-config/skills/.template \
-         modules/home/claude-config/skills/my-skill
+   cp -r modules/home/agent-skills/.template \
+         modules/home/agent-skills/my-skill
    ```
 
 2. Edit `my-skill/SKILL.md`:
@@ -23,7 +23,7 @@ How to add a new skill:
 4. Stage the new files so Nix flake can see them:
 
    ```sh
-   git -C /etc/nix-darwin add modules/home/claude-config/skills/my-skill
+   git -C /etc/nix-darwin add modules/home/agent-skills/my-skill
    ```
 
 5. Apply:
@@ -36,5 +36,5 @@ After activation, the skill appears at both:
 - `~/.claude/skills/my-skill/`
 - `~/.codex/skills/my-skill/`
 
-The `.template` folder is **never** linked — `skills.nix` skips any folder
-starting with `.`.
+The `.template` folder is **never** linked — `agent-skills.nix` skips any
+folder starting with `.`.
