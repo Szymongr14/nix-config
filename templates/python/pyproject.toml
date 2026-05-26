@@ -1,0 +1,15 @@
+[project]
+name = "new_python_project"
+version = "0.1.0"
+description = ""
+authors = []
+requires-python = ">=3.12"
+dependencies = [
+    # Add your dependencies here, e.g.:
+    # "requests",
+]
+
+[tool.uv]
+# Treat this as a script/notebook environment, not a publishable package
+# (no src/ layout required).
+package = false
