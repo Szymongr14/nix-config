@@ -30,6 +30,7 @@
 
       ignores = [
         ".DS_Store"
+        ".envrc"
       ];
     };
   };
