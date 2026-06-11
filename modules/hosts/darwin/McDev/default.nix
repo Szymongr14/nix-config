@@ -21,7 +21,7 @@ in
     modules = with config.flake.modules.darwin; [
       base
       McDev
-      # linux-builder  # uncomment to enable the Linux VM builder
+      linux-builder  # uncomment to enable the Linux VM builder
     ];
   };
 

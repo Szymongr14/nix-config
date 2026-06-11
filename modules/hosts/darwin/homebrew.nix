@@ -2,21 +2,21 @@
   flake.modules.darwin.base = {
     homebrew = {
       enable = true;
+      onActivation.autoUpdate = true;
       onActivation.cleanup = "uninstall"; # Remove unlisted packages
+      onActivation.extraFlags = [ "--force-cleanup" ];
 
       brews = [
         "sketchybar"
+        "can1357/tap/omp"
         "cristianoliveira/tap/aerospace-scratchpad"
         "cocoapods"
       ];
 
       casks = [
-        "rive"
         "codexbar"
         "wispr-flow"
         "firefox"
-        "rstudio"
-        "antigravity"
         "alt-tab"
         "android-platform-tools"
         "android-studio"
@@ -35,23 +35,15 @@
         "signal"
         "stats"
         "tailscale-app"
-        "grishka/grishka/neardrop"
         "visual-studio-code"
         "yaak"
       ];
 
       taps = [
+        "can1357/tap"
         "cristianoliveira/tap"
         "felixkratz/formulae"  # for sketchybar
-        "grishka/grishka"      # for neardrop
       ];
     };
-
-    # NearDrop ships quarantined; clear it after Homebrew installs/updates casks.
-    system.activationScripts.removeNearDropQuarantine.text = ''
-      if [ -d "/Applications/NearDrop.app" ]; then
-        /usr/bin/xattr -r -d com.apple.quarantine "/Applications/NearDrop.app" || true
-      fi
-    '';
   };
 }

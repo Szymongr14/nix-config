@@ -44,6 +44,11 @@
         # OrbStack integration.
         [ -f "$HOME/.orbstack/shell/init.zsh" ] && \
           source "$HOME/.orbstack/shell/init.zsh"
+
+        # omp completions.
+        if command -v omp >/dev/null 2>&1; then
+          eval "$(omp completions zsh)"
+        fi
       '';
     };
   };
