@@ -11,5 +11,10 @@
       path = ../../templates/python;
       description = "Python project with uv + Nix-managed interpreter";
     };
+
+    latex = {
+      path = ../../templates/latex;
+      description = "LaTeX project with texliveFull and pre-commit hooks";
+    };
   };
 }
