@@ -9,9 +9,11 @@
         # before falling back to local build.
         extra-substituters = [
           "https://cache.dartkit.pl/dartkitos"
+          "https://nixos-raspberrypi.cachix.org"
         ];
         extra-trusted-public-keys = [
           "dartkitos:qbEVIC7PCAV2tfg+nUbUT9LqK30r6sdh9vOOcoiag40="
+          "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
         ];
       };
 
