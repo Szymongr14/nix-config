@@ -3,13 +3,10 @@
     homebrew = {
       enable = true;
       onActivation.autoUpdate = true;
-      onActivation.cleanup = "uninstall"; # Remove unlisted packages
+      onActivation.cleanup = "none";
       onActivation.extraFlags = [ "--force-cleanup" ];
 
       brews = [
-        "sketchybar"
-        "can1357/tap/omp"
-        "cristianoliveira/tap/aerospace-scratchpad"
         "cocoapods"
       ];
 
@@ -42,8 +39,12 @@
       taps = [
         "can1357/tap"
         "cristianoliveira/tap"
-        "felixkratz/formulae"  # for sketchybar
       ];
+
+      extraConfig = ''
+        brew "can1357/tap/omp", trusted: true
+        brew "cristianoliveira/tap/aerospace-scratchpad", trusted: true
+      '';
     };
   };
 }
