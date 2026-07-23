@@ -11,7 +11,13 @@
       # because it prevents the VM from running out of RAM and swapping.
       maxJobs = 2;
 
-      supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
+      supportedFeatures = [
+        "kvm"
+        "benchmark"
+        "big-parallel"
+        "nixos-test"
+        "uid-range"
+      ];
 
       config = {
         virtualisation = {
@@ -26,9 +32,23 @@
           cores = 8;
         };
 
-        # CRITICAL: Tell the Nix daemon INSIDE the Linux VM to use all available
-        # virtual cores for a single build. This turns `make` into `make -j8`.
-        nix.settings.cores = 0;
+        nix.settings = {
+          # Tell the Nix daemon INSIDE the Linux VM to use all available
+          # virtual cores for a single build. This turns `make` into `make -j8`.
+          cores = 0;
+
+          # Required for builds that need the `uid-range` system feature,
+          # such as NixOS tests that run systemd-nspawn containers.
+          auto-allocate-uids = true;
+          extra-system-features = [ "uid-range" ];
+          experimental-features = [
+            "auto-allocate-uids"
+            "cgroups"
+          ];
+
+          # Required when QEMU nodes and systemd-nspawn containers share a VLAN.
+          sandbox-paths = [ "/dev/net" ];
+        };
       };
     };
   };
