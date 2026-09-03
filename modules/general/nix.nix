@@ -5,6 +5,10 @@
         experimental-features = "nix-command flakes";
         trusted-users = [ "root" "szymongrrr" ];
 
+        min-free = 20 * 1024 * 1024 * 1024;
+        max-free = 50 * 1024 * 1024 * 1024;
+        gc-reserved-space = 1024 * 1024 * 1024;
+
         # Extra binary caches — Nix downloads prebuilt artifacts from here
         # before falling back to local build.
         extra-substituters = [
@@ -19,10 +23,9 @@
 
       gc = {
         automatic = true;
-        options = "--delete-older-than 30d";
+        options = "--delete-older-than 14d";
         interval = {
-          Weekday = 0;
-          Hour = 2;
+          Hour = 3;
           Minute = 0;
         };
       };
